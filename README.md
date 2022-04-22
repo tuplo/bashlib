@@ -5,11 +5,14 @@ Collection of `bash` utility functions.
 ## Install
 
 ```bash
+curl -sSL https://raw.githubusercontent.com/tuplo/bashlib/main/install.sh | bash
+
+# or with wget
 wget -qO- https://raw.githubusercontent.com/tuplo/bashlib/main/install.sh | bash
 
-# or with curl
+# for a versioned install
+curl -sSL https://raw.githubusercontent.com/tuplo/bashlib/v1.2.0/install.sh | bash
 
-curl -sSL https://raw.githubusercontent.com/tuplo/bashlib/main/install.sh | bash
 ```
 
 This will create a directory named `@tuplo/bashlib` on the path it was called from.

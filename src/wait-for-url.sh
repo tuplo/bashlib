@@ -3,16 +3,16 @@ set -euo pipefail
 
 # wait_for_url URL [-u user:passwd]
 function wait_for_url() {
-  local -r url="$( cut -d ' ' -f 1 <<< "$@" )"
-  local -r options="$( cut -d ' ' -f 2- <<< "$@" )"
+	local -r url="$(cut -d ' ' -f 1 <<<"$@")"
+	local -r options="$(cut -d ' ' -f 2- <<<"$@")"
 	local auth
 
-  while getopts ":u:" optname "${options}"; do
-  	case "${optname}" in
-    u) auth="${OPTARG:1}" ;;
-    *) ;;
-    esac
-  done
+	while getopts ":u:" optname "${options}"; do
+		case "${optname}" in
+		u) auth="${OPTARG:1}" ;;
+		*) ;;
+		esac
+	done
 
 	local curl="curl --output /dev/null --insecure --silent --head --fail ${url}"
 	if [[ -n "${auth}" ]]; then
@@ -24,4 +24,6 @@ function wait_for_url() {
 		sleep 1
 		echo -n "."
 	done
+
+	echo "OK"
 }

@@ -5,7 +5,7 @@ set -euo pipefail
 function docker_rm() {
 	local container_name=${1:?}
   
-  is_there=$(docker ps --all --quiet --filter name="${container_name}")
+  local -r is_there=$(docker ps --all --quiet --filter name="${container_name}")
   if [[ -n "${is_there}" ]]; then
     docker rm --force "${container_name}"
   fi

@@ -45,6 +45,14 @@ Waits for the existence of a file.
 
 Waits for a URL to be available.
 
+## Local development
+
+It needs to setup custom directory for git hooks
+
+```bash
+make init
+```
+
 ## License
 
 MIT

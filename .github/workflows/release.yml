@@ -1,0 +1,16 @@
+name: Backup
+
+on:
+  create:
+    tags:
+      - v*
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: bash sh/release.sh
+        env:
+          GIT_USER: ${{ github.actor }}
+          GIT_PASSWORD: ${{ secrets.GH_TOKEN }}

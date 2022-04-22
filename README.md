@@ -56,6 +56,12 @@ It needs to setup custom directory for git hooks
 make init
 ```
 
+## Release
+
+```bash
+make release
+```
+
 ## License
 
 MIT

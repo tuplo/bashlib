@@ -17,7 +17,7 @@ set -euo pipefail
 	rm -rf "${dest:?}"
 	mkdir -p "${dest:?}"
 
-	if ! ${download} | tar xz -C "${dest}" --exclude='*\.githooks*' --exclude='*sh\/*' --strip-components=2; then
+	if ! ${download} | tar xz -C "${dest}" --exclude='*\.githooks*' --exclude='*sh\/*' --exclude='.github/*' --strip-components=2; then
 		echo "Failed to download @tuplo/bashlib"
 		exit 1
 	fi

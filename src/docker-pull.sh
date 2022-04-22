@@ -5,7 +5,7 @@ set -euo pipefail
 function docker_pull() {
 	local image="${1:?}"
 
-	if [[ ! "${image}" =~ '^local' ]]; then
+	if [[ ! "${image}" =~ ^local ]]; then
 		docker pull "${image}"
 	fi
 }

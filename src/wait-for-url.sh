@@ -14,7 +14,7 @@ function wait_for_url() {
     esac
   done
 
-	local -r curl="curl --output /dev/null --insecure --silent --head --fail ${url}"
+	local curl="curl --output /dev/null --insecure --silent --head --fail ${url}"
 	if [[ -n "${auth}" ]]; then
 		curl="${curl} --user ${auth}"
 	fi

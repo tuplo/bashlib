@@ -45,6 +45,6 @@ last_version=$(get_latest_version)
 new_version=$(get_new_version)
 if [[ -n "${new_version}" && "${new_version}" != "${last_version}" ]]; then
 	last_commit=$(get_last_commit)
-	git tag -a "${new_version}" -m "${last_commit}"
+	git tag -a "v${new_version}" -m "${last_commit}"
 	echo "Bumped version to ${new_version}"
 fi

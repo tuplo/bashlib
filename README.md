@@ -18,7 +18,7 @@ This will create a directory named `@tuplo/bashlib` on the path it was called fr
 
 ```bash
 
-source ./@tuplo/bashlib/.sh
+source "$(dirname "${0}")/@tuplo/bashlib/.sh"
 
 ```
 

@@ -18,7 +18,8 @@ This will create a directory named `@tuplo/bashlib` on the path it was called fr
 
 ```bash
 
-source "$(dirname "${0}")/@tuplo/bashlib/.sh"
+# includes relative to this script's location, no matter where it's called from
+source "$(dirname "${BASH_SOURCE[0]}")/@tuplo/bashlib/.sh"
 
 ```
 

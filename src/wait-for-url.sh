@@ -15,7 +15,7 @@ function wait_for_url() {
 	done
 
 	local curl="curl --output /dev/null --insecure --silent --head --fail ${url}"
-	if [[ -n "${auth}" ]]; then
+	if [[ -n "${auth:-}" ]]; then
 		curl="${curl} --user ${auth}"
 	fi
 

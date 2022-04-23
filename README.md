@@ -40,6 +40,10 @@ Stops and removes a running container.
 
 Find a free port in the range 49152-65535.
 
+### `get_uuid`
+
+Create an UUID.
+
 ### `wait_for_file FILE`
 
 Waits for the existence of a file.

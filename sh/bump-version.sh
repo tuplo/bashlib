@@ -9,7 +9,7 @@ function get_last_commit_hash() {
 	git rev-parse HEAD
 }
 
-function get_last_commit() {
+function get_last_commit_message() {
 	git log -1 --pretty=%B
 }
 

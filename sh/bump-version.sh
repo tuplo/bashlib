@@ -25,7 +25,7 @@ function get_latest_version() {
 }
 
 function get_new_version() {
-	local -r last_commit=$(get_last_commit)
+	local -r last_commit_message=$(get_last_commit_message)
 	local -r last_version=$(get_latest_version)
 	local -r semver=". $(dirname -- "${BASH_SOURCE[0]}")/semver.sh"
 
@@ -34,17 +34,28 @@ function get_new_version() {
 		return
 	fi
 
-	if [[ "${last_commit}" =~ ^feat ]]; then
+	if [[ "${last_commit_message}" =~ ^feat ]]; then
 		${semver} bump minor "${last_version}"
-	elif [[ "${last_commit}" =~ ^fix ]]; then
+	elif [[ "${last_commit_message}" =~ ^fix ]]; then
 		${semver} bump patch "${last_version}"
 	fi
 }
 
+auth="${GIT_USER}:${GIT_PASSWORD}"
+last_commit_hash=$(get_last_commit_hash)
 last_version=$(get_latest_version)
 new_version=$(get_new_version)
+
 if [[ -n "${new_version}" && "${new_version}" != "${last_version}" ]]; then
-	last_commit=$(get_last_commit)
-	git tag -a "v${new_version}" -m "${last_commit}"
-	echo "Bumped version to ${new_version}"
+	echo "Bumping version to ${new_version}"
+	curl --silent \
+		--location \
+		--output /dev/null \
+		--silent \
+		--user "${auth}" \
+		--request POST https://api.github.com/repos/tuplo/bashlib/git/refs \
+		--data-raw '{
+			"ref": "refs/tags/v'"${new_version}"'", 
+			"sha": "'"${last_commit_hash}"'"
+		}'
 fi

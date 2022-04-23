@@ -1,16 +1,17 @@
-name: Release
+name: Bump version
 
 on:
-  create:
-    tags:
-      - v*
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  create_release:
+  bump_version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - run: bash sh/release.sh
+      - run: bash sh/bump-version.sh
         env:
           GIT_USER: ${{ github.actor }}
           GIT_PASSWORD: ${{ secrets.GH_TOKEN }}

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# import_src FILE
-import_src() {
+# import_sh FILE
+import_sh() {
   local -r src_file="${1:?}"
   local -r cwd=$(dirname "$(readlink -f "${0}")")
 

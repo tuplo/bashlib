@@ -47,7 +47,7 @@ Find a free port in the range 49152-65535.
 
 Create an UUID.
 
-### `import_src FILE`
+### `import_sh FILE`
 
 Include another shell script into current script, no matter where the parent script is being called from.
 

@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+set -euo pipefail
 
 {
+	extract() {
+		local -r dest="${1:?}"
+		local -r tarball="${dest}/tarball.tar.gz"
+		tar -tzf "${tarball}" \
+			| grep src \
+			| xargs tar -xf "${tarball}" -C "${dest}" --strip-components 2 
+		rm -rf "${tarball:?}"
+	}
+
 	main() {
 		local -r include_dir="${HOME}/.local/include"
 		local -r dest="${include_dir}/@tuplo/bashlib"
@@ -23,10 +32,8 @@ set -euxo pipefail
 		rm -rf "${dest:?}"
 		mkdir -p "${dest:?}"
 
-		if ! ${download_cmd} | tar xz -C "${dest}" --strip-components=2 "*/src/*"; then
-			echo "Failed to download @tuplo/bashlib"
-			exit 1
-		fi
+		${download_cmd} > "${dest}/tarball.tar.gz"
+		extract "${dest}"
 
 		echo "Installed at ${dest}"
 	}

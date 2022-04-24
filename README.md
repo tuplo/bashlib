@@ -47,6 +47,10 @@ Find a free port in the range 49152-65535.
 
 Create an UUID.
 
+### `import_src FILE`
+
+Include another shell script into current script, no matter where the parent script is being called from.
+
 ### `wait_for_file FILE`
 
 Waits for the existence of a file.

@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 # wait_for_url URL [-u user:passwd]
-function wait_for_url() {
+wait_for_url() {
 	local -r url="$(cut -d ' ' -f 1 <<<"$@")"
 	local -r options="$(cut -d ' ' -f 2- <<<"$@")"
 	local auth

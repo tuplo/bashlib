@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
-source "$(dirname -- "${BASH_SOURCE[0]}")/docker-pull.sh"
-source "$(dirname -- "${BASH_SOURCE[0]}")/docker-rm.sh"
-source "$(dirname -- "${BASH_SOURCE[0]}")/get-random-port.sh"
-source "$(dirname -- "${BASH_SOURCE[0]}")/get-uuid.sh"
-source "$(dirname -- "${BASH_SOURCE[0]}")/wait-for-file.sh"
-source "$(dirname -- "${BASH_SOURCE[0]}")/wait-for-url.sh"
+cwd=$(dirname "$(readlink -f "${0}")")
+
+source "${cwd}/docker-pull.sh"
+source "${cwd}/docker-rm.sh"
+source "${cwd}/get-random-port.sh"
+source "${cwd}/get-uuid.sh"
+source "${cwd}/wait-for-file.sh"
+source "${cwd}/wait-for-url.sh"

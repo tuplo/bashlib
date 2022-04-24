@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 # wait_for_file FILE
-function wait_for_file() {
+wait_for_file() {
 	local file=${1:?}
 
 	echo "Waiting for ${file}"

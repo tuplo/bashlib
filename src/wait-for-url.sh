@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# wait_for_url URL [-u user:passwd]
+# wait_for_url URL [-u USER:PASSWD]
 wait_for_url() {
 	local -r url="$(cut -d ' ' -f 1 <<<"$@")"
 	local -r options="$(cut -d ' ' -f 2- <<<"$@")"

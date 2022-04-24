@@ -2,7 +2,7 @@
 
 # wait_for_file FILE
 wait_for_file() {
-	local file=${1:?}
+	local -r file=${1:?}
 
 	echo "Waiting for ${file}"
 	until [[ -f "${file}" ]]; do

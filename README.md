@@ -55,7 +55,7 @@ Include another shell script into current script, no matter where the parent scr
 
 Waits for the existence of a file.
 
-### `wait_for_url URL [-u user:passwd]`
+### `wait_for_url URL [-u USER:PASSWD]`
 
 Waits for a URL to be available.
 

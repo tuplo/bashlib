@@ -19,11 +19,14 @@ This will create a directory named `@tuplo/bashlib` on the path it was called fr
 
 ## Usage
 
+Export an environment variable with the installation directory, then include it:
+
 ```bash
+export TUPLO_BASHLIB="$HOME/.local/include/@tuplo/bashlib/.sh"
 
+# on ./my-script.sh
 # includes relative to this script's location, no matter where it's called from
-source "$(dirname "${BASH_SOURCE[0]}")/@tuplo/bashlib/.sh"
-
+source "${TUPLO_BASHLIB}"
 ```
 
 ## API

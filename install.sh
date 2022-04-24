@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -euxo pipefail
 
 {
 	main() {
@@ -23,7 +23,7 @@ set -euo pipefail
 		rm -rf "${dest:?}"
 		mkdir -p "${dest:?}"
 
-		if ! ${download_cmd} | tar xz -C "${dest}" --exclude='*sh\/*' --exclude='.github/*' --strip-components=2; then
+		if ! ${download_cmd} | tar xz -C "${dest}" --strip-components=2 "*/src/*"; then
 			echo "Failed to download @tuplo/bashlib"
 			exit 1
 		fi

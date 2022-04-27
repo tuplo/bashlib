@@ -5,9 +5,11 @@ set -euo pipefail
 	extract() {
 		local -r dest="${1:?}"
 		local -r tarball="${dest}/tarball.tar.gz"
-		tar -tzf "${tarball}" \
-			| grep src \
-			| xargs tar -xf "${tarball}" -C "${dest}" --strip-components 2 
+
+		for file in $(tar -tf "${tarball}" | grep src); do
+			tar -xf "${tarball}" -C "${dest}" --strip-components 2 "${file}"
+		done
+
 		rm -rf "${tarball:?}"
 	}
 
@@ -32,7 +34,7 @@ set -euo pipefail
 		rm -rf "${dest:?}"
 		mkdir -p "${dest:?}"
 
-		${download_cmd} > "${dest}/tarball.tar.gz"
+		${download_cmd} >"${dest}/tarball.tar.gz"
 		extract "${dest}"
 
 		echo "Installed at ${dest}"
